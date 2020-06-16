@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Victor Barcellos Lopes
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\Action\Action">
+        <plugin name="webjump_pluging_test" type="Webjump\DependencyInjectionTopic\Plugin\PluginTest" disabled="false" />
+    </type>
+
+    <virtualType name="Webjump\DependencyInjectionTopic\Model\CustomDebugHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/custom-debug.log</argument>
+        </arguments>
+    </virtualType>
+
+
+
+    <virtualType name="Webjump\DependencyInjectionTopic\Model\CustomLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="critical" xsi:type="object">Webjump\DependencyInjectionTopic\Model\Logger\Handler\Critical</item>
+                <item name="debug" xsi:type="object">Webjump\DependencyInjectionTopic\Model\CustomDebugHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+
+    <type name="Webjump\DependencyInjectionTopic\Plugin\PluginTest">
+        <arguments>
+            <argument name="customLogger" xsi:type="object">Webjump\DependencyInjectionTopic\Model\CustomLogger</argument>
+        </arguments>
+    </type>
+
+    <type name="Webjump\DependencyInjectionTopic\Observer\ActionPreDispatch">
+        <arguments>
+            <argument name="logger" xsi:type="object">Webjump\DependencyInjectionTopic\Model\CustomLogger</argument>
+        </arguments>
+    </type>
+
+</config>

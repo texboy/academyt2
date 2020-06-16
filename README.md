@@ -21,3 +21,10 @@ Guide
 
 Project
 - Ex 4.a.I completed
+
+### 16/06/2020
+Guide
+ - Cap 2.d.IV completed 
+
+Project
+- Ex 4.a.II and III completed

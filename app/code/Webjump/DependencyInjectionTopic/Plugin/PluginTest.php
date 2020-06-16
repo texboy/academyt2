@@ -3,10 +3,13 @@
  * Copyright (c) 2020. Victor Barcellos Lopes
  */
 
+declare(strict_types=1);
+
 namespace Webjump\DependencyInjectionTopic\Plugin;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\View\Result\Page;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -15,48 +18,52 @@ use Psr\Log\LoggerInterface;
  */
 class PluginTest
 {
-
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private $customLogger;
 
     /**
      * PluginTest constructor.
-     * @param LoggerInterface $logger
+     * @param LoggerInterface $customLogger
      */
-    public function __construct(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
+    public function __construct(
+        LoggerInterface $customLogger
+    ) {
+        $this->customLogger = $customLogger;
     }
+
 
     /**
      * @param Action $subject
      */
-    public function beforeDispatch(Action $subject)
+    public function beforeDispatch(Action $subject): void
     {
-        $this->logger->info('beforeDispatch called');
+        $this->customLogger->debug('beforeDispatch called');
     }
 
     /**
      * @param Action $subject
      * @param callable $proceed
+     * @param RequestInterface $request
+     * @return Page
      */
-    public function aroundDispatch(Action $subject, callable $proceed, RequestInterface $request)
+    public function aroundDispatch(Action $subject, callable $proceed, RequestInterface $request): Page
     {
-        $this->logger->info('aroundDispatch called before proceed');
+        $this->customLogger->debug('aroundDispatch called before proceed');
         $returnValue = $proceed($request);
-        $this->logger->info('aroundDispatch called after proceed');
+        $this->customLogger->debug('aroundDispatch called after proceed');
         return $returnValue;
     }
 
     /**
      * @param Action $subject
-     * @param $result
+     * @param Page $result
+     * @return Page
      */
-    public function afterDispatch(Action $subject, $result)
+    public function afterDispatch(Action $subject, Page $result): Page
     {
-        $this->logger->info('afterDispatch called');
+        $this->customLogger->debug('afterDispatch called');
         return $result;
     }
 }
