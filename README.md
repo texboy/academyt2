@@ -20,11 +20,11 @@ Guide
  - Cap 2.d.III completed 
 
 Project
-- Ex 4.a.I completed
+- Ex 4.a.I completed (Module Webjumo_DependencyInjectionTopic)
 
 ### 16/06/2020
 Guide
  - Cap 2.d.IV completed 
 
 Project
-- Ex 4.a.II and III completed
+- Ex 4.a.II and III completed (Module Webjumo_DependencyInjectionTopic)
