@@ -28,3 +28,12 @@ Guide
 
 Project
 - Ex 4.a.II and III completed (Module Webjumo_DependencyInjectionTopic)
+
+### 17/06/2020
+Guide
+ - Cap 2.d.v and vi completed
+ - Cap 2.e.i and ii completed
+ 
+ Project
+ - Ex 4.iv completed (Module Webjumo_DependencyInjectionTopic)
+ - Ex 5.a completed (Module_CliCommandTopic)
