@@ -37,3 +37,7 @@ Guide
  Project
  - Ex 4.iv completed (Module Webjumo_DependencyInjectionTopic)
  - Ex 5.a completed (Module_CliCommandTopic)
+
+### 18/06/2020
+Guide
+- 

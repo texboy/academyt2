@@ -48,7 +48,7 @@ class PluginTest
      * @param RequestInterface $request
      * @return Page
      */
-    public function aroundDispatch(Action $subject, callable $proceed, RequestInterface $request): Page
+    public function aroundDispatch(Action $subject, callable $proceed, RequestInterface $request)
     {
         $this->customLogger->debug('aroundDispatch called before proceed');
         $returnValue = $proceed($request);
@@ -59,9 +59,9 @@ class PluginTest
     /**
      * @param Action $subject
      * @param Page $result
-     * @return Page
+     * @return object
      */
-    public function afterDispatch(Action $subject, Page $result): Page
+    public function afterDispatch(Action $subject, $result)
     {
         $this->customLogger->debug('afterDispatch called');
         return $result;
