@@ -40,4 +40,8 @@ Guide
 
 ### 18/06/2020
 Guide
-- 
+- Cap 3.a.i, ii and iii completed
+
+Project
+- Ex 6.a and c completed (Webjump_ControllerRouterTopic)
+- Ex 6.b completed (Webjump_ApiTopic)
