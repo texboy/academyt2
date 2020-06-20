@@ -2,9 +2,7 @@
 <!--
   ~ Copyright (c) 2020. Victor Barcellos Lopes
   -->
-
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-
-    <preference for="Webjump\ApiTopic\Api\ApiInterface" type="Webjump\ApiTopic\Model\Api"/>
-
+    <preference for="Webjump\DatabaseTopic\Api\Data\PetInterface" type="Webjump\DatabaseTopic\Model\Pet"/>
+    <preference for="Webjump\DatabaseTopic\Api\PetRepositoryInterface" type="Webjump\DatabaseTopic\Model\PetRepository"/>
 </config>
