@@ -74,5 +74,9 @@
     ],
     "extra": {
         "magento-force": "override"
+    },
+    "scripts": {
+	"post-install-cmd": "vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/",
+	"post-update-cmd": "vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/"
     }
 }

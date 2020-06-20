@@ -1,5 +1,4 @@
-parameters:
-    bin_dir: ./vendor/bin
+grumphp:
     hide_circumvention_tip: true
     process_timeout: 120
     tasks:
@@ -23,7 +22,7 @@ parameters:
           always_execute: true
 
       phpcs:
-          standard: "./dev/tests/static/framework/Magento"
+          standard: "Magento2"
           whitelist_patterns:
             - /^app\/code\/(.*)/
           tab_width: 4
