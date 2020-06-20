@@ -30,7 +30,6 @@ class Api implements \Webjump\ApiTopic\Api\ApiInterface
         $this->serializer = $serializer;
     }
 
-
     /**
      * @inheritDoc
      */
@@ -38,6 +37,14 @@ class Api implements \Webjump\ApiTopic\Api\ApiInterface
     {
         $result = ["message" => "success", "webapi" => [$value]];
         return $this->serializer->serialize($result);
+    }
+
+    /**
+     * @return void
+     */
+    public function test(): void
+    {
+       $top = 'massa';
     }
 
     /**
