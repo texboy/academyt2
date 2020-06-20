@@ -8,12 +8,9 @@ declare(strict_types=1);
 namespace Webjump\ApiTopic\Model;
 
 use Magento\Framework\Serialize\SerializerInterface;
+use Webjump\ApiTopic\Api\ApiInterface;
 
-/**
- * Class Api
- * @package Webjump\ApiTopic\Model
- */
-class Api implements \Webjump\ApiTopic\Api\ApiInterface
+class Api implements ApiInterface
 {
 
     /**
@@ -40,11 +37,13 @@ class Api implements \Webjump\ApiTopic\Api\ApiInterface
     }
 
     /**
-     * @return void
+     * @return int
      */
-    public function test(): void
+    public function test(): int
     {
-       $top = 'massa';
+        $top = 1;
+        $top = $top * 2;
+        return $top;
     }
 
     /**

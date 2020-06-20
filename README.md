@@ -45,3 +45,9 @@ Guide
 Project
 - Ex 6.a and c completed (Webjump_ControllerRouterTopic)
 - Ex 6.b completed (Webjump_ApiTopic)
+
+### 19/06/2020
+
+Project
+- Add grumPhp
+- Set magento 2 phpcs ruleset as default on phpcs
