@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Victor Barcellos Lopes
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.container" remove="true"/>
+        <referenceContainer name="content">
+            <container name="test">
+                <block template="Webjump_ControllerRouterTopic::academy.phtml" />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

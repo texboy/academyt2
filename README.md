@@ -51,3 +51,11 @@ Project
 Project
 - Add grumPhp
 - Set magento 2 phpcs ruleset as default on phpcs
+
+### 20/06/2020
+
+Guide
+- Cap 4.a.i, ii and iii completed
+
+Project 
+- 7.a, b and c completed (Theme Webjump Academy)
