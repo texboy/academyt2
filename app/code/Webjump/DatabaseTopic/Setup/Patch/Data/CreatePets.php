@@ -69,7 +69,6 @@ class CreatePets implements DataPatchInterface
         $this->customerFactory = $customerFactory;
     }
 
-
     /**
      * @inheritDoc
      */
@@ -100,7 +99,7 @@ class CreatePets implements DataPatchInterface
         foreach ($pets as $pet) {
             $this->savePet($pet);
         }
-        
+
         $this->moduleDataSetup->getConnection()->endSetup();
     }
 

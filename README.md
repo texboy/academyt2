@@ -56,6 +56,9 @@ Project
 
 Guide
 - Cap 4.a.i, ii and iii completed
+- Cap 5.a completed
+- Cap 5.b.i, ii, iii, iv, v and vi completed
 
 Project 
 - 7.a, b and c completed (Theme Webjump Academy)
+- 8.a, b and c Completed (Webjump_DatabaseTopic)

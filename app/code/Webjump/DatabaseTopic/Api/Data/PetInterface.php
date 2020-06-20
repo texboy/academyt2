@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace Webjump\DatabaseTopic\Api\Data;
 
-
 interface PetInterface
 {
     const ENTITY_ID = 'entity_id';
