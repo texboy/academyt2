@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Webjump\DatabaseTopic\Api;
 
+use Magento\Framework\DataObject;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Webjump\DatabaseTopic\Api\Data\PetInterface;
@@ -19,6 +20,11 @@ interface PetRepositoryInterface
      * @return PetInterface
      */
     public function getById(int $entityId): PetInterface;
+
+    /**
+     * @return  DataObject[]
+     */
+    public function getList(): array;
 
     /**
      * @param PetInterface $pet

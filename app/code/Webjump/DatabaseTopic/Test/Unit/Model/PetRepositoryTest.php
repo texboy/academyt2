@@ -12,6 +12,8 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use PHPUnit\Framework\TestCase;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Webjump\DatabaseTopic\Api\Data\PetInterfaceFactory;
+use Webjump\DatabaseTopic\Model\ResourceModel\Pet\CollectionFactory;
+use Webjump\DatabaseTopic\Model\ResourceModel\Pet\Collection;
 use Webjump\DatabaseTopic\Model\Pet;
 use Webjump\DatabaseTopic\Model\PetRepository;
 use Webjump\DatabaseTopic\Model\ResourceModel\PetResourceModel;
@@ -43,6 +45,16 @@ class PetRepositoryTest extends TestCase
      */
     private $petRepository;
 
+    /**
+     * @var CollectionFactory
+     */
+    private $petCollectionFactory;
+
+    /**
+     * @var Collection
+     */
+    private $petCollection;
+
     public function setUp()
     {
         $this->objectManager = new ObjectManager($this);
@@ -59,9 +71,19 @@ class PetRepositoryTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
+        $this->petCollectionFactory = $this->getMockBuilder(CollectionFactory::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['create'])
+            ->getMock();
+
+        $this->petCollection = $this->getMockBuilder(Collection::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $this->petRepository = $this->objectManager->getObject(PetRepository::class, [
             'petFactory' => $this->petFactory,
-            'petResourceModel' => $this->petResourceModel
+            'petResourceModel' => $this->petResourceModel,
+            'petCollectionFactory' => $this->petCollectionFactory
         ]);
     }
 
@@ -129,5 +151,20 @@ class PetRepositoryTest extends TestCase
 
         $this->expectException(CouldNotSaveException::class);
         $this->petRepository->save($this->pet);
+    }
+
+    public function testGetListShouldReturnArray(): void
+    {
+        $items = [];
+        $this->petCollectionFactory->expects($this->once())
+            ->method('create')
+            ->willReturn($this->petCollection);
+
+        $this->petCollection->expects($this->once())
+            ->method('getItems')
+            ->willReturn($items);
+
+        $result = $this->petRepository->getList();
+        $this->assertEquals($items, $result);
     }
 }

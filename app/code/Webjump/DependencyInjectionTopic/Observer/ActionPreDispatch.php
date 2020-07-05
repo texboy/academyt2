@@ -5,7 +5,6 @@
 
 namespace Webjump\DependencyInjectionTopic\Observer;
 
-
 use Magento\Framework\Event\Observer;
 use Psr\Log\LoggerInterface;
 
@@ -24,7 +23,6 @@ class ActionPreDispatch implements \Magento\Framework\Event\ObserverInterface
     {
         $this->logger = $logger;
     }
-
 
     /**
      * @inheritDoc

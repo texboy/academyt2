@@ -13,8 +13,8 @@ use Magento\Framework\View\Result\Page;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class PluginTest
- * @package Webjump\DependencyInjectionTopic\Plugin
+ * Class PluginTest for testing
+ * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  */
 class PluginTest
 {
@@ -32,7 +32,6 @@ class PluginTest
     ) {
         $this->customLogger = $customLogger;
     }
-
 
     /**
      * @param Action $subject

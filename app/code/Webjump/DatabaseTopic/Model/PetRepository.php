@@ -12,6 +12,8 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Webjump\DatabaseTopic\Api\Data\PetInterface;
 use Webjump\DatabaseTopic\Api\PetRepositoryInterface;
 use Webjump\DatabaseTopic\Api\Data\PetInterfaceFactory;
+use Webjump\DatabaseTopic\Model\ResourceModel\Pet\Collection;
+use Webjump\DatabaseTopic\Model\ResourceModel\Pet\CollectionFactory;
 use Webjump\DatabaseTopic\Model\ResourceModel\PetResourceModel;
 
 class PetRepository implements PetRepositoryInterface
@@ -28,16 +30,24 @@ class PetRepository implements PetRepositoryInterface
     private $petResourceModel;
 
     /**
+     * @var CollectionFactory
+     */
+    private $petCollectionFactory;
+
+    /**
      * PetRepository constructor.
      * @param PetInterfaceFactory $petFactory
      * @param PetResourceModel $petResourceModel
+     * @param CollectionFactory $petCollectionFactory
      */
     public function __construct(
         PetInterfaceFactory $petFactory,
-        PetResourceModel $petResourceModel
+        PetResourceModel $petResourceModel,
+        CollectionFactory $petCollectionFactory
     ) {
         $this->petFactory = $petFactory;
         $this->petResourceModel = $petResourceModel;
+        $this->petCollectionFactory = $petCollectionFactory;
     }
 
     /**
@@ -54,6 +64,16 @@ class PetRepository implements PetRepositoryInterface
             );
         }
         return $pet;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getList(): array
+    {
+        /** @var Collection $petCollection */
+        $petCollection = $this->petCollectionFactory->create();
+        return $petCollection->getItems();
     }
 
     /**

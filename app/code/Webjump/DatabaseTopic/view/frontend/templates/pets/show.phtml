@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright (c) 2020. Victor Barcellos Lopes
+ */
+
+/** @var Webjump\DatabaseTopic\Block\Pets\Show $block */
+?>
+
+<h1>Pets</h1>
+
+    <div class="pets-grid">
+        <div class="pets-grid-header">
+            <span>
+                <strong><?= __('ID'); ?></strong>
+            </span>
+            <span>
+                <strong><?= __('Pet name'); ?></strong>
+            </span>
+            <span>
+                <strong><?= __('Pet owner'); ?></strong>
+            </span>
+            <span>
+                <strong><?= __('Owner telephone'); ?></strong>
+            </span>
+            <span>
+                <strong><?= __('Owner ID.'); ?></strong>
+            </span>
+        </div>
+        <div class="pets-grid-data">
+            <?php foreach ($block->getAllPets() as $pet): ?>
+                <span><?= $pet->getData('entity_id') ;?></span>
+                <span><?= $pet->getData('pet_name') ;?></span>
+                <span><?= $pet->getData('pet_owner') ;?></span>
+                <span><?= $pet->getData('owner_telephone') ;?></span>
+                <span><?= $pet->getData('owner_id') ;?></span>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
