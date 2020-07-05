@@ -6,9 +6,10 @@
 namespace Webjump\DependencyInjectionTopic\Observer;
 
 use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\ObserverInterface;
 use Psr\Log\LoggerInterface;
 
-class ActionPreDispatch implements \Magento\Framework\Event\ObserverInterface
+class ActionPreDispatch implements ObserverInterface
 {
     /**
      * @var LoggerInterface
