@@ -1,0 +1,12 @@
+{
+    "pet_type_table": {
+        "column": {
+            "entity_id": true,
+            "pet_type": true
+        },
+        "index": {
+            "PET_TYPE_TABLE_ENTITY_ID": true,
+            "PET_TYPE_TABLE_PET_TYPE": true
+        }
+    }
+}

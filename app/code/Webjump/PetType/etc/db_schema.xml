@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="pet_type_table">
+        <column xsi:type="int" name="entity_id" padding="11" unsigned="false" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="pet_type" nullable="false" length="255" comment="Pet Type"/>
+        <index referenceId="PET_TYPE_TABLE_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <index referenceId="PET_TYPE_TABLE_PET_NAME" indexType="btree">
+            <column name="pet_type"/>
+        </index>
+    </table>
+</schema>

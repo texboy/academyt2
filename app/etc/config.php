@@ -252,6 +252,7 @@ return [
         'Webjump_HelloWorld' => 1,
         'Webjump_DependencyInjectionTopic' => 1,
         'Webjump_PetCrud' => 1,
+        'Webjump_PetType' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];

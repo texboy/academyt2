@@ -13,6 +13,13 @@
         <deps>
             <dep>webjump_pet_listing.webjump_pet_listing_data_source</dep>
         </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New Pet</label>
+            </button>
+        </buttons>
     </settings>
     <dataSource name="webjump_pet_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
@@ -49,22 +56,10 @@
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="webjump_pet_listing_columns">
-        <column name="pet_name" sortOrder="10">
+        <column name="pet_type" sortOrder="10">
             <settings>
                 <filter>text</filter>
-                <label translate="true">Pet Name</label>
-            </settings>
-        </column>
-        <column name="pet_owner" sortOrder="20">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Pet Owner</label>
-            </settings>
-        </column>
-        <column name="owner_telephone" sortOrder="30">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Owner Telephone</label>
+                <label translate="true">Pet Type</label>
             </settings>
         </column>
 <!--        <actionsColumn class="Webjump\PetCrud\Ui\Component\Listing\Column\CycleOrderActions" name="actions">-->
