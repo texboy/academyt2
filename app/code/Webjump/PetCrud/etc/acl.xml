@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2020. Victor Barcellos Lopes
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Webjump_PetCrud::pet" sortOrder="10" title="Pets">
+                    <resource id="Webjump_PetCrud::menu" sortOrder="10" title="View Pets Menu"/>
+                    <resource id="Webjump_PetCrud::list" sortOrder="10" title="List Pets"/>
+                    <resource id="Webjump_PetCrud::create" sortOrder="10" title="Create Pets"/>
+                    <resource id="Webjump_PetCrud::edit" sortOrder="10" title="Edit Pets"/>
+                    <resource id="Webjump_PetCrud::delete" sortOrder="10" title="Delete Pets"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

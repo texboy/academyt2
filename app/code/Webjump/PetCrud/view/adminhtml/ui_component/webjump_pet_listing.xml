@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Victor Barcellos Lopes
+  -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">webjump_pet_listing.webjump_pet_listing_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>webjump_pet_listing_columns</spinner>
+        <deps>
+            <dep>webjump_pet_listing.webjump_pet_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="webjump_pet_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">source_code</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Webjump_PetCrud::list</aclResource>
+        <dataProvider class="Webjump\PetCrud\Ui\DataProvider\Listing\PetDataProvider" name="webjump_pet_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filterSearch name="name"/>
+        <filters name="listing_filters">
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="webjump_pet_listing_columns">
+        <column name="pet_name" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Pet Name</label>
+            </settings>
+        </column>
+        <column name="pet_owner" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Pet Owner</label>
+            </settings>
+        </column>
+        <column name="owner_telephone" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Owner Telephone</label>
+            </settings>
+        </column>
+<!--        <actionsColumn class="Webjump\PetCrud\Ui\Component\Listing\Column\CycleOrderActions" name="actions">-->
+<!--            <settings>-->
+<!--                <indexField>entity_id</indexField>-->
+<!--                <resizeEnabled>false</resizeEnabled>-->
+<!--                <resizeDefaultWidth>107</resizeDefaultWidth>-->
+<!--            </settings>-->
+<!--        </actionsColumn>-->
+    </columns>
+</listing>

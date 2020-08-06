@@ -62,3 +62,13 @@ Guide
 Project 
 - 7.a, b and c completed (Theme Webjump Academy)
 - 8.a, b and c Completed (Webjump_DatabaseTopic)
+
+#Track 3
+### 05/08/2020
+
+Project
+- Crud:
+    -[x] Listing 
+    -[ ] Create
+    -[ ] Edit
+    -[ ] Delete 

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+  ~  @author      Webjump Core Team <dev@webjump.com.br>
+  ~  @copyright   2020 Webjump (http://www.webjump.com.br)
+  ~  @license     http://www.webjump.com.br  Copyright
+  ~  @link        http://www.webjump.com.br
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Webjump\PetCrud\Model\ResourceModel\Commercial\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">pet_table</argument>
+            <argument name="resourceModel" xsi:type="string">Webjump\DatabaseTopic\Model\ResourceModel\Pet\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="webjump_pet_listing_data_source" xsi:type="string">Webjump\PetCrud\Model\ResourceModel\Commercial\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Webjump\PetCrud\Ui\DataProvider\Listing\PutDataProviderPool" type="Magento\Ui\DataProvider\Modifier\Pool">
+<!--        <arguments>-->
+<!--            <argument name="modifiers" xsi:type="array">-->
+<!--                <item name="columnOrderStatus" xsi:type="array">-->
+<!--                    <item name="class" xsi:type="string">Webjump\PetCrud\Ui\DataProvider\Listing\Modifier\Actions</item>-->
+<!--                    <item name="sortOrder" xsi:type="number">20</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+    </virtualType>
+
+    <type name="Webjump\PetCrud\Ui\DataProvider\Listing\PetDataProvider">
+        <arguments>
+            <argument name="modifiersPool" xsi:type="object">Webjump\PetCrud\Ui\DataProvider\Listing\PutDataProviderPool</argument>
+        </arguments>
+    </type>
+
+</config>

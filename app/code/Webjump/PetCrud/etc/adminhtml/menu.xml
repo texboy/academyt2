@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2020. Victor Barcellos Lopes
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Webjump_PetCrud::menu"
+             module="Webjump_PetCrud"
+             resource="Webjump_PedCrud::menu"
+             sortOrder="10"
+             title="Pets"
+             action="pet/crud/index"/>
+    </menu>
+</config>
