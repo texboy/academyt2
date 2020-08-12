@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Webjump\PetType\Test\Unit\Model;
 
+use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use PHPUnit\Framework\TestCase;
@@ -92,10 +93,6 @@ class PetTypeRepositoryTest extends TestCase
     {
         $entityId = 1;
 
-        $this->petType->expects($this->once())
-            ->method('getEntityId')
-            ->willReturn($entityId);
-
         $this->petTypeFactory->expects($this->once())
             ->method('create')
             ->willReturn($this->petType);
@@ -106,26 +103,6 @@ class PetTypeRepositoryTest extends TestCase
 
         $result = $this->petTypeRepository->getById($entityId);
         $this->assertEquals($result, $this->petType);
-    }
-
-    public function testGetByIdShouldThrowNoSuchEntityException()
-    {
-        $entityId = 1;
-
-        $this->petType->expects($this->once())
-            ->method('getEntityId')
-            ->willReturn(null);
-
-        $this->petTypeFactory->expects($this->once())
-            ->method('create')
-            ->willReturn($this->petType);
-
-        $this->petTypeResourceModel->expects($this->once())
-            ->method('load')
-            ->with($this->petType, $entityId);
-
-        $this->expectException(NoSuchEntityException::class);
-        $this->petTypeRepository->getById($entityId);
     }
 
     public function testSaveShouldReturnEntityId(): void
@@ -167,5 +144,45 @@ class PetTypeRepositoryTest extends TestCase
 
         $result = $this->petTypeRepository->getList();
         $this->assertEquals($items, $result);
+    }
+
+    public function testDeleteShouldReturnTrue(): void
+    {
+        $entityId = 1;
+
+        $this->petTypeFactory->expects($this->once())
+            ->method('create')
+            ->willReturn($this->petType);
+
+        $this->petTypeResourceModel->expects($this->once())
+            ->method('load')
+            ->with($this->petType, $entityId);
+
+        $this->petTypeResourceModel->expects($this->once())
+            ->method('delete')
+            ->with($this->petType);
+
+        $result = $this->petTypeRepository->deleteById($entityId);
+        $this->assertTrue($result);
+    }
+
+    public function testDeleteShouldReturnThrowCouldNotDeleteException(): void
+    {
+        $entityId = 1;
+
+        $this->petTypeFactory->expects($this->once())
+            ->method('create')
+            ->willReturn($this->petType);
+
+        $this->petTypeResourceModel->expects($this->once())
+            ->method('load')
+            ->with($this->petType, $entityId);
+
+        $this->petTypeResourceModel->expects($this->once())
+            ->method('delete')
+            ->willThrowException(new \Exception("error"));
+
+        $this->expectException(CouldNotDeleteException::class);
+        $this->petTypeRepository->deleteById($entityId);
     }
 }

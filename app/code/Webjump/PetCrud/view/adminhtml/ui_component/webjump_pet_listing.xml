@@ -15,9 +15,9 @@
         </deps>
         <buttons>
             <button name="add">
-                <url path="*/*/new"/>
+                <url path="*/*/create"/>
                 <class>primary</class>
-                <label translate="true">Add New Pet</label>
+                <label translate="true">Create Pet Type</label>
             </button>
         </buttons>
     </settings>
@@ -29,7 +29,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Webjump_PetCrud::list</aclResource>
-        <dataProvider class="Webjump\PetCrud\Ui\DataProvider\Listing\PetDataProvider" name="webjump_pet_listing_data_source">
+        <dataProvider class="Webjump\PetCrud\Ui\DataProvider\PetDataProvider" name="webjump_pet_listing_data_source">
             <settings>
                 <requestFieldName>entity_id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -56,18 +56,23 @@
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="webjump_pet_listing_columns">
+        <column name="entity_id" sortOrder="5">
+            <settings>
+                <label translate="true">ID.</label>
+            </settings>
+        </column>
         <column name="pet_type" sortOrder="10">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Pet Type</label>
             </settings>
         </column>
-<!--        <actionsColumn class="Webjump\PetCrud\Ui\Component\Listing\Column\CycleOrderActions" name="actions">-->
-<!--            <settings>-->
-<!--                <indexField>entity_id</indexField>-->
-<!--                <resizeEnabled>false</resizeEnabled>-->
-<!--                <resizeDefaultWidth>107</resizeDefaultWidth>-->
-<!--            </settings>-->
-<!--        </actionsColumn>-->
+        <actionsColumn class="Webjump\PetCrud\Ui\Component\Listing\Column\Actions" name="actions">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>

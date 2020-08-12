@@ -16,14 +16,14 @@ use Magento\Framework\View\Result\PageFactory;
 /**
  * @codeCoverageIgnore
  */
-class Index extends Action
+class Create extends Action
 {
     const URL_PATH_DEFAULT = 'pet/crud/index';
 
     /**
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Webjump_PetCrud::list';
+    const ADMIN_RESOURCE = 'Webjump_PetCrud::create';
 
     /**
      * @var PageFactory
@@ -31,7 +31,7 @@ class Index extends Action
     private $resultPageFactory;
 
     /**
-     * Index constructor.
+     * Create constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
      */
@@ -51,7 +51,7 @@ class Index extends Action
         $resultPage = $this->resultPageFactory->create();
         try {
             $resultPage->setActiveMenu('Webjump_PetCrud::menu');
-            $resultPage->getConfig()->getTitle()->set(__("Pets"));
+            $resultPage->getConfig()->getTitle()->set(__("Create"));
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
             $this->_redirect(self::URL_PATH_DEFAULT);

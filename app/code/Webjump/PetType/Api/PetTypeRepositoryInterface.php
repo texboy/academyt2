@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Webjump\PetType\Api;
 
 use Magento\Framework\DataObject;
+use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Webjump\PetType\Api\Data\PetTypeInterface;
@@ -16,7 +17,6 @@ interface PetTypeRepositoryInterface
 {
     /**
      * @param int $entityId
-     * @throws NoSuchEntityException
      * @return PetTypeInterface
      */
     public function getById(int $entityId): PetTypeInterface;
@@ -32,4 +32,11 @@ interface PetTypeRepositoryInterface
      * @return int
      */
     public function save(PetTypeInterface $pet): int;
+
+    /**
+     * @param int $entityId
+     * @throws CouldNotDeleteException
+     * @return bool
+     */
+    public function deleteById(int $entityId): bool;
 }

@@ -4,5 +4,5 @@
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Webjump\PetType\Api\Data\PetTypeInterface" type="Webjump\PetType\Model\PetType"/>
-    <preference for="Webjump\PetType\Api\PetTypeRepositoryInterface" type="Webjump\DatabaseTopic\Model\PetTypeRepository"/>
+    <preference for="Webjump\PetType\Api\PetTypeRepositoryInterface" type="Webjump\PetType\Model\PetTypeRepository"/>
 </config>

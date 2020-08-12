@@ -68,7 +68,18 @@ Project
 
 Project
 - Crud:
-    -[x] Listing 
+    -[x] List
     -[ ] Create
     -[ ] Edit
     -[ ] Delete 
+    
+### 11/08/2020
+
+Project
+- Crud:
+    -[x] List
+    -[x] Create
+    -[x] Edit
+    -[x] Delete 
+- All unit tests completed
+

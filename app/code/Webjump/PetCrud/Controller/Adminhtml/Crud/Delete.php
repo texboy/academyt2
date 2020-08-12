@@ -9,21 +9,24 @@ namespace Webjump\PetCrud\Controller\Adminhtml\Crud;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
+use Webjump\PetType\Api\PetTypeRepositoryInterface;
 
 /**
  * @codeCoverageIgnore
  */
-class Index extends Action
+class Delete extends Action implements HttpGetActionInterface
 {
     const URL_PATH_DEFAULT = 'pet/crud/index';
 
     /**
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Webjump_PetCrud::list';
+    const ADMIN_RESOURCE = 'Webjump_PetCrud::delete';
 
     /**
      * @var PageFactory
@@ -31,33 +34,42 @@ class Index extends Action
     private $resultPageFactory;
 
     /**
-     * Index constructor.
+     * @var PetTypeRepositoryInterface
+     */
+    private $petTypeRepository;
+
+    /**
+     * Save constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
+     * @param PetTypeRepositoryInterface $petTypeRepository
      */
     public function __construct(
         Context $context,
-        PageFactory $resultPageFactory
+        PageFactory $resultPageFactory,
+        PetTypeRepositoryInterface $petTypeRepository
     ) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
+        $this->petTypeRepository = $petTypeRepository;
     }
 
     /**
-     * @return Page
+     * @inheritDoc
      */
-    public function execute(): Page
+    public function execute(): ResultInterface
     {
-        $resultPage = $this->resultPageFactory->create();
+        $resultRedirect = $this->resultRedirectFactory->create();
         try {
-            $resultPage->setActiveMenu('Webjump_PetCrud::menu');
-            $resultPage->getConfig()->getTitle()->set(__("Pets"));
+            $this->petTypeRepository->deleteById((int)$this->getRequest()->getParam('entity_id'));
+            $this->messageManager->addSuccessMessage('The pet type was deleted!');
+            $resultRedirect->setPath(self::URL_PATH_DEFAULT);
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
             $this->_redirect(self::URL_PATH_DEFAULT);
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
         }
-        return $resultPage;
+        return $resultRedirect;
     }
 }

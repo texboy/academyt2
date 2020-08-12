@@ -12,6 +12,7 @@
                     <resource id="Webjump_PetCrud::create" sortOrder="10" title="Create Pets"/>
                     <resource id="Webjump_PetCrud::edit" sortOrder="10" title="Edit Pets"/>
                     <resource id="Webjump_PetCrud::delete" sortOrder="10" title="Delete Pets"/>
+                    <resource id="Webjump_PetCrud::save" sortOrder="10" title="Create Pets"/>
                 </resource>
             </resource>
         </resources>

@@ -7,8 +7,8 @@ declare(strict_types=1);
 
 namespace Webjump\PetType\Model;
 
+use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Webjump\PetType\Api\Data\PetTypeInterface;
 use Webjump\PetType\Api\PetTypeRepositoryInterface;
 use Webjump\PetType\Api\Data\PetTypeInterfaceFactory;
@@ -59,11 +59,6 @@ class PetTypeRepository implements PetTypeRepositoryInterface
         /** @var PetTypeInterface $petType */
         $petType = $this->petTypeFactory->create();
         $this->petTypeResourceModel->load($petType, $entityId);
-        if (!$petType->getEntityId()) {
-            throw new NoSuchEntityException(
-                __('Pet type with "%1" ID doesn\'t exist. Verify the ID and try again.', $entityId)
-            );
-        }
         return $petType;
     }
 
@@ -88,5 +83,15 @@ class PetTypeRepository implements PetTypeRepositoryInterface
         } catch (\Exception $e) {
             throw new CouldNotSaveException(__('Could not save pet type'), $e);
         }
+    }
+
+    public function deleteById(int $entityId): bool
+    {
+        try {
+            $this->petTypeResourceModel->delete($this->getById($entityId));
+        } catch (\Exception $e) {
+            throw new CouldNotDeleteException(__('Could not delete pet type'), $e);
+        }
+        return true;
     }
 }
