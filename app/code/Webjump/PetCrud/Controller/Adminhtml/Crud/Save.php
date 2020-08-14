@@ -13,7 +13,7 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Result\PageFactory;
-use Webjump\PetCrud\Api\PetTypeSaveProcessorInterface;
+use Webjump\PetCrud\Api\PetKindSaveProcessorInterface;
 
 /**
  * @codeCoverageIgnore
@@ -33,24 +33,24 @@ class Save extends Action implements HttpPostActionInterface
     private $resultPageFactory;
 
     /**
-     * @var PetTypeSaveProcessorInterface
+     * @var PetKindSaveProcessorInterface
      */
-    private $petTypeSaveProcessor;
+    private $petKindSaveProcessor;
 
     /**
      * Save constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
-     * @param PetTypeSaveProcessorInterface $petTypeSaveProcessor
+     * @param petKindSaveProcessorInterface $petKindSaveProcessor
      */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
-        PetTypeSaveProcessorInterface $petTypeSaveProcessor
+        petKindSaveProcessorInterface $petKindSaveProcessor
     ) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
-        $this->petTypeSaveProcessor = $petTypeSaveProcessor;
+        $this->petKindSaveProcessor = $petKindSaveProcessor;
     }
 
     /**
@@ -60,8 +60,8 @@ class Save extends Action implements HttpPostActionInterface
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         try {
-            $this->petTypeSaveProcessor->process($this->getRequest()->getParams());
-            $this->messageManager->addSuccessMessage('The pet type was saved!');
+            $this->petKindSaveProcessor->process($this->getRequest()->getParams());
+            $this->messageManager->addSuccessMessage('The pet kind was saved!');
             $resultRedirect->setPath(self::URL_PATH_DEFAULT);
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());

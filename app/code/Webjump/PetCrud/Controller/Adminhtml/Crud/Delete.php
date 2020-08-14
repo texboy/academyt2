@@ -10,11 +10,10 @@ namespace Webjump\PetCrud\Controller\Adminhtml\Crud;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Result\PageFactory;
-use Webjump\PetType\Api\PetTypeRepositoryInterface;
+use Webjump\PetKind\Api\PetKindRepositoryInterface;
 
 /**
  * @codeCoverageIgnore
@@ -34,24 +33,24 @@ class Delete extends Action implements HttpGetActionInterface
     private $resultPageFactory;
 
     /**
-     * @var PetTypeRepositoryInterface
+     * @var PetKindRepositoryInterface
      */
-    private $petTypeRepository;
+    private $petKindRepository;
 
     /**
      * Save constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
-     * @param PetTypeRepositoryInterface $petTypeRepository
+     * @param PetKindRepositoryInterface $petKindRepository
      */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
-        PetTypeRepositoryInterface $petTypeRepository
+        PetKindRepositoryInterface $petKindRepository
     ) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
-        $this->petTypeRepository = $petTypeRepository;
+        $this->petKindRepository = $petKindRepository;
     }
 
     /**
@@ -61,8 +60,8 @@ class Delete extends Action implements HttpGetActionInterface
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         try {
-            $this->petTypeRepository->deleteById((int)$this->getRequest()->getParam('entity_id'));
-            $this->messageManager->addSuccessMessage('The pet type was deleted!');
+            $this->petKindRepository->deleteById((int)$this->getRequest()->getParam('entity_id'));
+            $this->messageManager->addSuccessMessage('The pet kind was deleted!');
             $resultRedirect->setPath(self::URL_PATH_DEFAULT);
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());

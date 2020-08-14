@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2020. Victor Barcellos Lopes
+  -->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="GET" url="/V1/pet/kinds">
+        <service class="Webjump\PetKind\Api\PetKindRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Webjump_PetCrud::list"/>
+        </resources>
+    </route>
+    <route method="GET" url="/V1/pet/kinds/:entityId">
+        <service class="Webjump\PetKind\Api\PetKindRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Webjump_PetCrud::list"/>
+        </resources>
+    </route>
+    <route method="POST" url="/V1/pet/kinds">
+        <service class="Webjump\PetKind\Api\PetKindRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Webjump_PetCrud::create"/>
+        </resources>
+    </route>
+    <route method="PUT" url="/V1/pet/kinds/:entityId">
+        <service class="Webjump\PetKind\Api\PetKindRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Webjump_PetCrud::edit"/>
+        </resources>
+    </route>
+    <route method="DELETE" url="/V1/pet/kinds/:entityId">
+        <service class="Webjump\PetKind\Api\PetKindRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Webjump_PetCrud::edit"/>
+        </resources>
+    </route>
+</routes>

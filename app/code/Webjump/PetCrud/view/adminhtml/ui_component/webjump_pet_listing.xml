@@ -17,7 +17,7 @@
             <button name="add">
                 <url path="*/*/create"/>
                 <class>primary</class>
-                <label translate="true">Create Pet Type</label>
+                <label translate="true">Create Pet Kind</label>
             </button>
         </buttons>
     </settings>
@@ -61,10 +61,16 @@
                 <label translate="true">ID.</label>
             </settings>
         </column>
-        <column name="pet_type" sortOrder="10">
+        <column name="name" sortOrder="10">
             <settings>
                 <filter>text</filter>
-                <label translate="true">Pet Type</label>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="description" sortOrder="15">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Description</label>
             </settings>
         </column>
         <actionsColumn class="Webjump\PetCrud\Ui\Component\Listing\Column\Actions" name="actions">

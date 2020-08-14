@@ -59,6 +59,7 @@ atlassian*
 /pub/media/captcha/*
 /pub/static/*
 !/pub/static/.htaccess
+/dev/tests/unit/{{coverage_dir}}
 
 /var/*
 !/var/.htaccess

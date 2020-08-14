@@ -5,6 +5,6 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Webjump\PetCrud\Api\PetTypeSaveProcessorInterface" type="Webjump\PetCrud\Model\PetTypeSaveProcessor"/>
+    <preference for="Webjump\PetCrud\Api\PetKindSaveProcessorInterface" type="Webjump\PetCrud\Model\PetKindSaveProcessor"/>
 
 </config>
