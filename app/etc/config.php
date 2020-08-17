@@ -251,9 +251,10 @@ return [
         'Webjump_DatabaseTopic' => 1,
         'Webjump_HelloWorld' => 1,
         'Webjump_DependencyInjectionTopic' => 1,
-        'Webjump_PetApi' => 1,
-        'Webjump_PetCrud' => 1,
         'Webjump_PetKind' => 1,
+        'Webjump_PetCrud' => 1,
+        'Webjump_PetGraphQl' => 1,
+        'Webjump_PetApi' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];

@@ -3,9 +3,11 @@
   ~ Copyright (c) 2020. Victor Barcellos Lopes
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Webjump_PetApi">
+    <module name="Webjump_PetGraphQl">
         <sequence>
+            <module name="Magento_GraphQl"/>
             <module name="Webjump_PetKind"/>
+            <module name="Webjump_PetCrud"/>
         </sequence>
     </module>
 </config>
