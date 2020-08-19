@@ -23,6 +23,9 @@ class PetKindArrayProcessor implements PetKindArrayProcessorInterface
             if (!isset($petKindInput['input']['description'])) {
                 $petKindInput['input']['description'] = "";
             }
+            if (isset($petKindInput['entity_id'])) {
+                $petKindInput['input']['entity_id'] = $petKindInput['entity_id'];
+            }
             $data['general'] = $petKindInput['input'];
         }
         return $data;

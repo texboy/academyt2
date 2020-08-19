@@ -6,7 +6,8 @@ type Query {
 }
 
 type Mutation {
-    savePetKind (input: PetKindInput): Boolean @resolver(class: "Webjump\\PetGraphQl\\Model\\Resolver\\SavePetKindResolver") @doc(description: "The savePetKind creates or edit a pet kind.") @cache(cacheable: false)
+    createPetKind (input: PetKindInput): Boolean @resolver(class: "Webjump\\PetGraphQl\\Model\\Resolver\\CreatePetKindResolver") @doc(description: "The savePetKind creates a pet kind.") @cache(cacheable: false)
+    editPetKind (entity_id: Int, input: PetKindInput): Boolean @resolver(class: "Webjump\\PetGraphQl\\Model\\Resolver\\EditPetKindResolver") @doc(description: "The savePetKind edits a pet kind.") @cache(cacheable: false)
     deletePetKind (entity_id: Int): Boolean @resolver(class: "Webjump\\PetGraphQl\\Model\\Resolver\\DeletePetKindResolver") @doc(description: "The deletePetKind query deletes a pet kind by id.") @cache(cacheable: false)
 }
 
@@ -18,8 +19,7 @@ type PetKind {
 }
 
 input PetKindInput {
-    entity_id: Int
-    name: String! @doc(description: "Pet kind name, such as Dog, Cat , etc...")
+    name: String @doc(description: "Pet kind name, such as Dog, Cat , etc...")
     description: String @doc(description: "Simple short description text for the pet kind")
 }
 

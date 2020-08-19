@@ -38,6 +38,7 @@ class PetKindArrayProcessorTest extends TestCase
     public function testProcessArrayShouldReturnArray():void
     {
         $data = [
+            "entity_id" => 1,
             "input" => [
                 "name" => "test"
             ]
@@ -45,7 +46,8 @@ class PetKindArrayProcessorTest extends TestCase
         $expectedResult = [
             "general" => [
                 "name" => "test",
-                "description" => ""
+                "description" => "",
+                "entity_id" => 1
             ]
         ];
         $result = $this->petKindArrayProcessor->processArray($data);
