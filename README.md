@@ -88,9 +88,14 @@ Project
 Project
 - Rest Api completed
 
-### 17/08/2020
+### 16/08/2020
 
 Project
 - Graphql Api Completed
+
+### 18/08/2020
+
+Project
+- Graphql Api Completed (added unit tests and change create and edit endpoints)
 
 
