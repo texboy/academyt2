@@ -255,6 +255,7 @@ return [
         'Webjump_PetCrud' => 1,
         'Webjump_PetGraphQl' => 1,
         'Webjump_PetApi' => 1,
+        'Webjump_PetKindCustomer' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];

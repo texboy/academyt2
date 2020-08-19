@@ -1,0 +1,19 @@
+{
+    "pet_kind_customer": {
+        "column": {
+            "entity_id": true,
+            "pet_kind_id": true,
+            "customer_id": true,
+            "created_at": true
+        },
+        "index": {
+            "PET_KIND_CUSTOMER_ENTITY_ID": true,
+            "PET_KIND_CUSTOMER_PET_KIND_ID": true,
+            "PET_KIND_CUSTOMER_CUSTOMER_ID": true
+        },
+        "constraint": {
+            "PET_KIND_CUSTOMER_PET_KIND_ID_PET_KIND_ENTITY_ID": true,
+            "PET_KIND_CUSTOMER_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}
