@@ -3,7 +3,19 @@
   ~ Copyright (c) 2020. Victor Barcellos Lopes
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Webjump\PetKind\Api\Data\PetKindInterface" type="Webjump\PetKind\Model\PetKind"/>
-    <preference for="Webjump\PetKind\Api\PetKindRepositoryInterface" type="Webjump\PetKind\Model\PetKindRepository"/>
-    <preference for="Webjump\PetKind\Api\PetKindSearchResultsInterface" type="Webjump\PetKind\Model\PetKindSearchResults"/>
+    <preference for="Webjump\PetKindCustomer\Api\Data\PetKindCustomerInterface" type="Webjump\PetKindCustomer\Model\PetKindCustomer"/>
+    <preference for="Webjump\PetKindCustomer\Api\PetKindCustomerRepositoryInterface" type="Webjump\PetKindCustomer\Model\PetKindCustomerRepository"/>
+    <preference for="Webjump\PetKindCustomer\Api\PetKindCustomerSearchResultsInterface" type="Webjump\PetKindCustomer\Model\PetKindCustomerSearchResults"/>
+    <preference for="Webjump\PetKindCustomer\Api\SaveStrategyInterface" type="Webjump\PetKindCustomer\Model\SaveContext"/>
+    <type name="Magento\Customer\Api\AccountManagementInterface">
+        <plugin name="SavePetKindCustomer" type="Webjump\PetKindCustomer\Plugin\PetKindCustomerSavePlugin"/>
+    </type>
+
+    <type name="Webjump\PetKindCustomer\Model\SaveContext">
+        <arguments>
+            <argument name="strategies" xsi:type="array">
+                <item name="SavePetKindCustomer" xsi:type="object">Webjump\PetKindCustomer\Model\Strategies\SavePetKindCustomer</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
