@@ -98,4 +98,14 @@ Project
 Project
 - Graphql Api Completed (added unit tests and change create and edit endpoints)
 
+### 19/08/2020
+
+Project
+- Added PetKindCustomer module (adds relationship between customer and petkind)
+- Created basic structure (db_schema, model, repository, etc...)g
+- Added Pet fields to customer registration form
+- Added strategy interface to allow easy addition of new fields
+- Create unit tests.
+
+
 
