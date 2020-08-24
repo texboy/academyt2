@@ -107,5 +107,13 @@ Project
 - Added strategy interface to allow easy addition of new fields
 - Create unit tests.
 
+### 23/08/2020
+- Added coverageIgnore tag to old files
+- Moved pet fields to customer edit form
+- Added extension attribute to customer
+- Added Admin configuration to show pet on the header of the page based on store view scope
+- Created frontend structure to show pet on the header
+- Created unit tests for new classes
+
 
 
