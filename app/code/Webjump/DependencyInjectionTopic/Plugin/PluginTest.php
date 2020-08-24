@@ -13,8 +13,7 @@ use Magento\Framework\View\Result\Page;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class PluginTest for testing
- * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+ * @codeCoverageIgnore
  */
 class PluginTest
 {

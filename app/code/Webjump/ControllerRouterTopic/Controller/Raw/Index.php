@@ -14,6 +14,9 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Index extends Action implements HttpGetActionInterface
 {
     /**

@@ -7,16 +7,16 @@ declare(strict_types=1);
 
 namespace Webjump\PetKindCustomer\Api;
 
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 interface SaveStrategyInterface
 {
     /**
-     * @param CustomerInterface $customer
+     * @param RequestInterface $request
      * @throws CouldNotSaveException
      * @throws NoSuchEntityException
      */
-    public function execute(CustomerInterface $customer): void;
+    public function execute(RequestInterface $request): void;
 }

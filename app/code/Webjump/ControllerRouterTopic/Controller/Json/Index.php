@@ -14,6 +14,9 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\Result\Json;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Index extends Action implements HttpGetActionInterface
 {
     /**

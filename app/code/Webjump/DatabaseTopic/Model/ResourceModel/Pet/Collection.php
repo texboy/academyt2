@@ -11,6 +11,9 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Webjump\DatabaseTopic\Model\Pet;
 use Webjump\DatabaseTopic\Model\ResourceModel\PetResourceModel;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Collection extends AbstractCollection
 {
     /**

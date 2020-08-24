@@ -10,8 +10,7 @@ namespace Webjump\DependencyInjectionTopic\Cron;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class CronTest
- * @package Webjump\DependencyInjectionTopic\Cron
+ * @codeCoverageIgnore
  */
 class CronTest
 {
@@ -28,7 +27,7 @@ class CronTest
     {
         $this->logger = $logger;
     }
-    
+
     public function execute(): void
     {
         $this->logger->debug('cron test executed successfully');

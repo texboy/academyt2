@@ -13,8 +13,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class HelloWorld
- * @package Webjump\CliCommandTopic\Console\Command
+ * @codeCoverageIgnore
  */
 class HelloWorld extends Command
 {

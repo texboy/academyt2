@@ -8,6 +8,9 @@ namespace Webjump\DependencyInjectionTopic\Model\Logger\Handler;
 
 use Monolog\Logger;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Critical extends \Magento\Framework\Logger\Handler\Base
 {
     /**

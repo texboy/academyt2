@@ -19,6 +19,9 @@ use Webjump\DatabaseTopic\Api\Data\PetInterfaceFactory;
 use Webjump\DatabaseTopic\Api\PetRepositoryInterface;
 use Webjump\DatabaseTopic\Model\Pet;
 
+/**
+ * @codeCoverageIgnore
+ */
 class CreatePets implements DataPatchInterface
 {
 

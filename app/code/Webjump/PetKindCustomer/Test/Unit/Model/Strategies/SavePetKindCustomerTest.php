@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace Webjump\PetKindCustomer\Test\Unit\Model\Strategies;
 
 use Laminas\Stdlib\Parameters;
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -21,9 +21,9 @@ use Webjump\PetKindCustomer\Model\Strategies\SavePetKindCustomer as Strategy;
 class SavePetKindCustomerTest extends TestCase
 {
     /**
-     * @var CustomerInterface
+     * @var CustomerSession
      */
-    private $customer;
+    private $customerSession;
 
     /**
      * @var RequestInterface
@@ -63,11 +63,11 @@ class SavePetKindCustomerTest extends TestCase
         $this->parameters = $this->createMock(Parameters::class);
         $this->petKindCustomerRepository = $this->createMock(PetKindCustomerRepositoryInterface::class);
         $this->petKindCustomer = $this->createMock(PetKindCustomerInterface::class);
-        $this->customer = $this->createMock(CustomerInterface::class);
+        $this->customerSession = $this->createMock(CustomerSession::class);
 
         $this->strategy = $objectManager->getObject(Strategy::class, [
-            'request' => $this->request,
-            'petKindCustomerRepository' => $this->petKindCustomerRepository
+            'petKindCustomerRepository' => $this->petKindCustomerRepository,
+            'customerSession' => $this->customerSession
         ]);
     }
 
@@ -80,7 +80,7 @@ class SavePetKindCustomerTest extends TestCase
         $customerId = '1';
         $petKindId = '1';
 
-        $this->customer->expects($this->exactly(2))
+        $this->customerSession->expects($this->once())
             ->method('getId')
             ->willReturn($customerId);
 
@@ -96,6 +96,6 @@ class SavePetKindCustomerTest extends TestCase
             ->method('get')
             ->willReturn($petKindId);
 
-        $this->strategy->execute($this->customer);
+        $this->strategy->execute($this->request);
     }
 }

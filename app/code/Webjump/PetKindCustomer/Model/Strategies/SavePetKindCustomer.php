@@ -7,17 +7,13 @@ declare(strict_types=1);
 
 namespace Webjump\PetKindCustomer\Model\Strategies;
 
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\RequestInterface;
 use Webjump\PetKindCustomer\Api\PetKindCustomerRepositoryInterface;
 use Webjump\PetKindCustomer\Api\SaveStrategyInterface;
 
 class SavePetKindCustomer implements SaveStrategyInterface
 {
-    /**
-     * @var RequestInterface
-     */
-    private $request;
 
     /**
      * @var PetKindCustomerRepositoryInterface
@@ -25,28 +21,35 @@ class SavePetKindCustomer implements SaveStrategyInterface
     private $petKindCustomerRepository;
 
     /**
+     * @var CustomerSession
+     */
+    private $customerSession;
+
+    /**
      * SavePetKindCustomer constructor.
-     * @param RequestInterface $request
      * @param PetKindCustomerRepositoryInterface $petKindCustomerRepository
+     * @param CustomerSession $customerSession
      */
     public function __construct(
-        RequestInterface $request,
-        PetKindCustomerRepositoryInterface $petKindCustomerRepository
+        PetKindCustomerRepositoryInterface $petKindCustomerRepository,
+        CustomerSession $customerSession
     ) {
-        $this->request = $request;
         $this->petKindCustomerRepository = $petKindCustomerRepository;
+        $this->customerSession = $customerSession;
     }
+
 
     /**
      * @inheritDoc
      */
-    public function execute(CustomerInterface $customer): void
+    public function execute(RequestInterface $request): void
     {
-        $petKindId = $this->request->getPost()->get('pet_kind');
-        $petKindCustomer = $this->petKindCustomerRepository->getByCustomerId((int)$customer->getId());
+        $petKindId = $request->getPost()->get('pet_kind');
+        $customerId = $this->customerSession->getId();
+        $petKindCustomer = $this->petKindCustomerRepository->getByCustomerId((int) $customerId);
         if ($petKindId !== null) {
             $petKindCustomer->setPetKindId((int) $petKindId);
-            $petKindCustomer->setCustomerId((int)$customer->getId());
+            $petKindCustomer->setCustomerId((int) $customerId);
             $this->petKindCustomerRepository->save($petKindCustomer);
         }
     }

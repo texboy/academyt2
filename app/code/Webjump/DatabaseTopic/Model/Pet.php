@@ -11,6 +11,9 @@ use Magento\Framework\Model\AbstractModel;
 use Webjump\DatabaseTopic\Api\Data\PetInterface;
 use Webjump\DatabaseTopic\Model\ResourceModel\PetResourceModel;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Pet extends AbstractModel implements PetInterface
 {
     /**

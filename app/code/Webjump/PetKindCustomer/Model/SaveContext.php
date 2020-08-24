@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Webjump\PetKindCustomer\Model;
 
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Framework\App\RequestInterface;
 use Webjump\PetKindCustomer\Api\SaveStrategyInterface;
 
 class SaveContext implements SaveStrategyInterface
@@ -29,10 +29,10 @@ class SaveContext implements SaveStrategyInterface
     /**
      * @inheritDoc
      */
-    public function execute(CustomerInterface $customer): void
+    public function execute(RequestInterface $request): void
     {
         foreach ($this->strategies as $strategy) {
-            $strategy->execute($customer);
+            $strategy->execute($request);
         }
     }
 }

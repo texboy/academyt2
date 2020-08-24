@@ -16,6 +16,9 @@ use Webjump\DatabaseTopic\Model\ResourceModel\Pet\Collection;
 use Webjump\DatabaseTopic\Model\ResourceModel\Pet\CollectionFactory;
 use Webjump\DatabaseTopic\Model\ResourceModel\PetResourceModel;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PetRepository implements PetRepositoryInterface
 {
 

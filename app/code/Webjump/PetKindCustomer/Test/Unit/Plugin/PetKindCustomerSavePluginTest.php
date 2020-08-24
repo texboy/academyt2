@@ -7,10 +7,12 @@ declare(strict_types=1);
 
 namespace Webjump\PetKindCustomer\Test\Unit\Plugin;
 
-use Magento\Customer\Api\AccountManagementInterface as AccountManager;
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Controller\Account\EditPost as Action;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Controller\Result\Redirect as Redirect;
 use Magento\Framework\Exception\CouldNotSaveException;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 use Webjump\PetKindCustomer\Plugin\PetKindCustomerSavePlugin as Plugin;
 use Webjump\PetKindCustomer\Api\SaveStrategyInterface;
 use Psr\Log\LoggerInterface;
@@ -28,14 +30,19 @@ class PetKindCustomerSavePluginTest extends TestCase
     private $logger;
 
     /**
-     * @var AccountManager
+     * @var Action
      */
-    private $accounManager;
+    private $action;
 
     /**
-     * @var CustomerInterface
+     * @var RequestInterface
      */
-    private $customer;
+    private $request;
+
+    /**
+     * @var Redirect
+     */
+    private $redirect;
 
     /**
      * @var Plugin
@@ -44,6 +51,7 @@ class PetKindCustomerSavePluginTest extends TestCase
 
     /**
      * @return void
+     * @throws ReflectionException
      */
     public function setUp(): void
     {
@@ -51,8 +59,9 @@ class PetKindCustomerSavePluginTest extends TestCase
 
         $this->saveStrategyContext = $this->createMock(SaveStrategyInterface::class);
         $this->logger = $this->createMock(LoggerInterface::class);
-        $this->accounManager = $this->createMock(AccountManager::class);
-        $this->customer = $this->createMock(CustomerInterface::class);
+        $this->action = $this->createMock(Action::class);
+        $this->request = $this->createMock(RequestInterface::class);
+        $this->redirect = $this->createMock(Redirect::class);
 
         $this->plugin = $objectManager->getObject(Plugin::class, [
             'saveContext' => $this->saveStrategyContext,
@@ -62,18 +71,26 @@ class PetKindCustomerSavePluginTest extends TestCase
 
     public function testBeforeExecuteShouldSaveAndLogAndReturnCustomer(): void
     {
+        $this->action->expects($this->once())
+            ->method('getRequest')
+            ->willReturn($this->request);
+
         $this->saveStrategyContext->expects($this->once())
             ->method('execute');
 
         $this->logger->expects($this->once())
             ->method('info');
 
-        $result = $this->plugin->afterCreateAccount($this->accounManager, $this->customer);
-        $this->assertEquals($this->customer, $result);
+        $result = $this->plugin->afterExecute($this->action, $this->redirect);
+        $this->assertEquals($this->redirect, $result);
     }
 
     public function testBeforeExecuteShouldLogOnException(): void
     {
+        $this->action->expects($this->once())
+            ->method('getRequest')
+            ->willReturn($this->request);
+
         $this->saveStrategyContext->expects($this->once())
             ->method('execute')
             ->willThrowException(new CouldNotSaveException(__('Error')));
@@ -81,7 +98,7 @@ class PetKindCustomerSavePluginTest extends TestCase
         $this->logger->expects($this->once())
             ->method('error');
 
-        $result = $this->plugin->afterCreateAccount($this->accounManager, $this->customer);
-        $this->assertEquals($this->customer, $result);
+        $result = $this->plugin->afterExecute($this->action, $this->redirect);
+        $this->assertEquals($this->redirect, $result);
     }
 }

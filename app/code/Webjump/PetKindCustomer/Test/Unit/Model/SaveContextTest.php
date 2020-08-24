@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Webjump\PetKindCustomer\Test\Unit\Model;
 
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use PHPUnit\Framework\TestCase;
@@ -22,9 +22,9 @@ class SaveContextTest extends TestCase
     private $strategy;
 
     /**
-     * @var CustomerInterface
+     * @var RequestInterface
      */
-    private $customer;
+    private $request;
 
     /**
      * @var SaveContext
@@ -38,7 +38,7 @@ class SaveContextTest extends TestCase
     {
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
         $this->strategy = $this->createMock(SaveContext::class);
-        $this->customer = $this->createMock(CustomerInterface::class);
+        $this->request = $this->createMock(RequestInterface::class);
 
         $this->saveContext = $objectManager->getObject(SaveContext::class, [
             'strategies' => [$this->strategy]
@@ -53,8 +53,8 @@ class SaveContextTest extends TestCase
     {
         $this->strategy->expects($this->once())
             ->method('execute')
-            ->with($this->customer);
+            ->with($this->request);
 
-        $this->saveContext->execute($this->customer);
+        $this->saveContext->execute($this->request);
     }
 }

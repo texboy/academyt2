@@ -13,6 +13,9 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ForwardResult extends Action implements HttpGetActionInterface
 {
     /**

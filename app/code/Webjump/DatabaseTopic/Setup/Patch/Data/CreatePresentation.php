@@ -21,6 +21,7 @@ use Webjump\DatabaseTopic\Model\Pet;
 
 /**
  * @SuppressWarnings(PHPMD)
+ * @codeCoverageIgnore
  */
 class CreatePresentation implements DataPatchInterface
 {

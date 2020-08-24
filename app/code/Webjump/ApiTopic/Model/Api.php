@@ -10,6 +10,9 @@ namespace Webjump\ApiTopic\Model;
 use Magento\Framework\Serialize\SerializerInterface;
 use Webjump\ApiTopic\Api\ApiInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Api implements ApiInterface
 {
 

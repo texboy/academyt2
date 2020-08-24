@@ -7,8 +7,8 @@ declare(strict_types=1);
 
 namespace Webjump\PetKindCustomer\Plugin;
 
-use Magento\Customer\Api\AccountManagementInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Controller\Account\EditPost as Action;
+use Magento\Framework\Controller\Result\Redirect as Redirect;
 use Webjump\PetKindCustomer\Api\SaveStrategyInterface;
 use Psr\Log\LoggerInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
@@ -40,18 +40,19 @@ class PetKindCustomerSavePlugin
     }
 
     /**
-     * @param AccountManagementInterface $subject
-     * @param $result
-     * @return CustomerInterface
+     * @param Action $subject
+     * @param Redirect $result
+     * @return Redirect
      */
-    public function afterCreateAccount(AccountManagementInterface $subject, $result): CustomerInterface
+    public function afterExecute(Action $subject, $result): Redirect
     {
         try {
-            $this->saveContext->execute($result);
+            $this->saveContext->execute($subject->getRequest());
             $this->logger->info(__('pet kind customer save executed without errors'));
         } catch (CouldNotSaveException | NoSuchEntityException $e) {
             $this->logger->error($e->getMessage());
         }
+
         return $result;
     }
 }

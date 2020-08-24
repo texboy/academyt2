@@ -10,6 +10,9 @@ namespace Webjump\ControllerRouterTopic\Controller\Redirect;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Index extends Action implements HttpGetActionInterface
 {
     /**

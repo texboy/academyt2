@@ -4,5 +4,9 @@
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Webjump_PetKindCustomer">
+        <sequence>
+            <module name="Magento_Customer"/>
+            <module name="Webjump_PetKind"/>
+        </sequence>
     </module>
 </config>

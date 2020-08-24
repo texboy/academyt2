@@ -14,6 +14,9 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\View\Result\Page;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Index extends Action implements HttpGetActionInterface
 {
     /**

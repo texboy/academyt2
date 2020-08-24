@@ -2,7 +2,17 @@
 /*
  * Copyright (c) 2020. Victor Barcellos Lopes
  */
-/** @var Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\View\Element\Template $block */
+
+/** @var $viewModelOption \Webjump\PetKindCustomer\ViewModel\PetKindOptions */
+$viewModelOption = $block->getData('view_model_options');
+
+/** @var $viewModelCustomer \Webjump\PetKindCustomer\ViewModel\CustomerData */
+$viewModelCustomer = $block->getData('view_model_customer');
+
+$customer = $viewModelCustomer->getCustomerData();
+$petKindSelectedId = $viewModelCustomer->getPetKindSelectedId();
+
 ?>
 
 <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */echo __('* Required Fields') ?>">
@@ -15,12 +25,10 @@
             <span><?= $block->escapeHtml(__('Pet Kind')) ?></span>
         </label>
         <select id="pet_kind" name="pet_kind" title="Pet Kind" class="control validate-select" data-validate="{required:true}">
-<!--            --><?php //$options = $block->getPetKindOptions(); ?>
-<!--            --><?php //foreach ($options as $option) : ?>
-            <option value="" selected="selected"'></option>
-            <option value="4"'>Dog</option>
-<!--                <option value="" selected="selected"'>--><?//= $block->escapeHtml(__($option->getLabel())) ?><!--</option>-->
-<!--            --><?php //endforeach;?>
+            <?php $options = $viewModelOption->getPetKindOptions($petKindSelectedId); ?>
+            <?php foreach ($options as $option) : ?>
+                <option value="<?= $block->escapeHtml($option['value']) ?>" <?= $option['selected'] ? "selected" : "" ?>><?= $block->escapeHtml($option['label']) ?></option>
+            <?php endforeach;?>
         </select>
     </div>
     <div class="field pet_name required">
@@ -28,7 +36,7 @@
             <span><?= $block->escapeHtml(__('Pet Name')) ?></span>
         </label>
         <div class="control">
-            <input type="text" name="pet_name" id="pet_kind" title="<?php /* @escapeNotVerified */echo __('Pet Name') ?>" class="input-text" data-validate="{required:true}" autocomplete="off">
+            <input type="text" name="pet_name" value="<?= $viewModelCustomer->getPetName() ?>" id="pet_kind" title="<?php /* @escapeNotVerified */echo __('Pet Name') ?>" class="input-text" data-validate="{required:true}" autocomplete="off">
         </div>
     </div>
 </fieldset>

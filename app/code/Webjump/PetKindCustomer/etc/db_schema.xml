@@ -5,6 +5,9 @@
         <column xsi:type="int" name="pet_kind_id" padding="11" unsigned="false" nullable="false" comment="Pet Kind ID"/>
         <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="Owner ID"/>
         <column xsi:type="datetime" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
         <constraint xsi:type="foreign"
                     referenceId="PET_KIND_CUSTOMER_PET_KIND_ID_PET_KIND_ENTITY_ID"
                     table="pet_kind_customer"

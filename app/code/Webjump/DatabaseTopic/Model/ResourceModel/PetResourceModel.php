@@ -9,6 +9,9 @@ namespace Webjump\DatabaseTopic\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PetResourceModel extends AbstractDb
 {
 

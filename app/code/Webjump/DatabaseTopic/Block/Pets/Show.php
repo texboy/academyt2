@@ -10,6 +10,9 @@ namespace Webjump\DatabaseTopic\Block\Pets;
 use Magento\Framework\View\Element\Template;
 use Webjump\DatabaseTopic\Api\PetRepositoryInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Show extends Template
 {
     /**
